@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name ATX_PSU-rescue)(type Legacy)(uri ${KIPRJMOD}/ATX_PSU-rescue.lib)(options "")(descr ""))
+)
