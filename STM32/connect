@@ -1,0 +1,1 @@
+JLinkExe -CommanderScript JLinkScripts/debug_script

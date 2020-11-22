@@ -22,6 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "UART.h"
 
 /* USER CODE END Includes */
 
@@ -94,7 +95,8 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  uint8_t msg_hello[] = "Hello world";
+  UART_send_str(&huart1, "System boot\r\n");
+  float val_ADC1;
 
   /* USER CODE END 2 */
 
@@ -102,9 +104,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_UART_Transmit(USART1, msg_hello, sizeof msg_hello, 5000U);
-    HAL_Delay(1000U);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+    HAL_Delay(1U);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
 
+    HAL_Delay(999U);
+
+
+    //HAL_ADC_Start(&hadc);
+    //HAL_ADC_PollForConversion(&hadc, 1);
+    //val_ADC1 = HAL_ADC_GetValue(&hadc)/(0xFFFF)*3.3f;
+    //UART_send_int(&huart1, (uint16_t)val_ADC1);
+
+    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
